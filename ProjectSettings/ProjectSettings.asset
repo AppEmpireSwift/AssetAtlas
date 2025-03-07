@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: AssetAtlas
+  productName: Asset Atlas
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -161,7 +161,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.test.app
+    Android: com.AssetAtlas.aa5678
     Standalone: com.DefaultCompany.2DProject
     iPhone: com.test.app
   buildNumber:
@@ -288,7 +288,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 1acde7b103f73c146832cecae5ff649e, type: 3}
+      m_Icon: {fileID: 2800000, guid: bd839d9d361cec5499ab827b7f84464b, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

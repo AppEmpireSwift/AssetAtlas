@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using MainScreen;
 using UnityEngine.UI;
 
 namespace Onboarding
@@ -11,6 +12,8 @@ namespace Onboarding
         [SerializeField] private float _animationDuration = 0.5f;
         [SerializeField] private Ease _enterEase = Ease.OutQuad;
         [SerializeField] private Ease _exitEase = Ease.InQuad;
+        [SerializeField] private MainScreenController _mainScreenController;
+        [SerializeField] private ScreenVisabilityHandler _screenVisabilityHandler;
 
         private int _currentIndex = 0;
         private CanvasGroup[] _canvasGroups;
@@ -21,7 +24,7 @@ namespace Onboarding
             for (int i = 0; i < _steps.Count; i++)
             {
                 _canvasGroups[i] = _steps[i].GetComponent<CanvasGroup>();
-                
+
                 if (_canvasGroups[i] == null)
                 {
                     _canvasGroups[i] = _steps[i].AddComponent<CanvasGroup>();
@@ -30,10 +33,12 @@ namespace Onboarding
 
             if (PlayerPrefs.HasKey("Onboarding"))
             {
+                _mainScreenController.Enable();
                 gameObject.SetActive(false);
             }
             else
             {
+                _screenVisabilityHandler.DisableScreen();
                 gameObject.SetActive(true);
                 ShowOnboarding();
             }
@@ -42,7 +47,7 @@ namespace Onboarding
         private void ShowOnboarding()
         {
             _currentIndex = 0;
-            
+
             for (int i = 0; i < _steps.Count; i++)
             {
                 _canvasGroups[i].alpha = 0;
@@ -58,7 +63,7 @@ namespace Onboarding
             AnimateStepExit(_currentIndex);
 
             _currentIndex++;
-            
+
             if (_currentIndex < _steps.Count)
             {
                 _steps[_currentIndex].SetActive(true);
@@ -67,6 +72,7 @@ namespace Onboarding
             else
             {
                 PlayerPrefs.SetInt("Onboarding", 1);
+                _mainScreenController.Enable();
                 gameObject.SetActive(false);
             }
         }
